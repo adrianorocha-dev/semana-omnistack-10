@@ -44,7 +44,15 @@ module.exports = {
 
 
     // Optional: create update and destroy methods
-    async update(req, res) {},
+    async update(req, res) {
+        const dev = await Dev.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-    async destroy(req, res) {},
+        return res.json(dev);
+    },
+
+    async destroy(req, res) {
+        await Dev.findByIdAndRemove(req.params.id);
+
+        return res.send();
+    },
 }
