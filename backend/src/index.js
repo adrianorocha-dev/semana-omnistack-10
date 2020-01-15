@@ -5,7 +5,8 @@ const routes = require('./routes')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://SkyLkr:omnistack10@cluster0-dwcrf.mongodb.net/week10?retryWrites=true&w=majority', {
+const { username, password } = require('./mongo-credentials.json');
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0-dwcrf.mongodb.net/week10?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
